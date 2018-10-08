@@ -4,6 +4,7 @@
 	\vspace{5mm} %5mm vertical space
 	\begin{minipage}{.45\linewidth}
         \begin{figure}[H]
+            \begin{center}
 			\begin{tabular}{c|c|c|c}
                 a& b & c & $f~(a,~b,~c)$ \\\hline
                 0& 0 & 0 & 0 \\
@@ -15,6 +16,7 @@
                 1& 1 & 0 & 0 \\
                 1& 1 & 1 & 0 
                \end{tabular}
+            \end{center}
             \caption{Tabla de verdad de la función dada.}
 		\end{figure}
 	\end{minipage}%
@@ -34,6 +36,23 @@
         \caption{Mapa de Karnaugh.}
 	\end{minipage} 
 \end{table}
+
+//hablar de los hazards y q se hace para evitarlos, mostrar mapa de karnaugh con glitches evitados
+
+\begin{wraptable}{r}{5.5cm}
+    \caption{A wrapped table going nicely inside the text.}\label{wrap-tab:1}
+    \begin{tabular}{ccc}\\\toprule  
+    Header-1 & Header-1 & Header-1 \\\midrule
+    2 &3 & 5\\  \midrule
+    2 &3 & 5\\  \midrule
+    2 &3 & 5\\  \bottomrule
+    \end{tabular}
+    \end{wraptable} 
+    {\lipsum[2] 
+\par
+asdfsdsfdgsdfgsfdgsfgsfg
+sdfsdgslfjgajfdfbsdfsfasfg j kj  bihfdfgsf fa gsdfg sdfsdgslfjgajfdfbsdfsfasfg
+Table~\ref{wrap-tab:1} is a wrapped table.
 
 
 
