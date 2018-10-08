@@ -1,0 +1,40 @@
+\section{Implementación de tabla de verdad con compuertas lógicas}
+
+\begin{table}[!htb]
+	\vspace{5mm} %5mm vertical space
+	\begin{minipage}{.45\linewidth}
+        \begin{figure}[H]
+			\begin{tabular}{c|c|c|c}
+                a& b & c & $f~(a,~b,~c)$ \\\hline
+                0& 0 & 0 & 0 \\
+                0& 0 & 1 & 1 \\
+                0& 1 & 0 & 1 \\
+                0& 1 & 1 & 1 \\
+                1& 0 & 0 & 0 \\
+                1& 0 & 1 & 1 \\
+                1& 1 & 0 & 0 \\
+                1& 1 & 1 & 0 
+               \end{tabular}
+            \caption{Tabla de verdad de la función dada.}
+		\end{figure}
+	\end{minipage}%
+	\begin{minipage}{.45\linewidth}
+		\begin{figure}[H]
+			\begin{center}
+                \begin{Karnaughvuit}
+                    \maxterms{0,2,3,7}
+                    \minterms{1,4,5,6}
+                    \implicant{1}{5}{green}
+                    \implicantcostats{4}{6}{blue}
+                    %\implicant{4}{5}{red}      //para el caso de hazards
+				\end{Karnaughvuit}
+				\label{table:mapaKarnaugh}
+			\end{center}
+        \end{figure}
+        \caption{Mapa de Karnaugh.}
+	\end{minipage} 
+\end{table}
+
+
+
+
