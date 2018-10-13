@@ -7,7 +7,9 @@
     \usepackage[thinlines]{easytable}
     \usepackage{diagbox}
     \usepackage{multirow}
-    
+    \usepackage{caption}
+    \usepackage{subcaption}
+
     \usepackage[protrusion=true,expansion=true]{microtype}	
     \usepackage{amsmath,amsfonts,amsthm} % Math packages
     \usepackage{breqn}
@@ -39,8 +41,8 @@
     \pagestyle{fancyplain}
     \fancyhead{}											% No page header
     \fancyfoot[L]{}											% Empty 
-    \fancyfoot[C]{}											% Empty
-    \fancyfoot[R]{\thepage}									% Pagenumbering
+    \fancyfoot[C]{\thepage}											% Empty
+    \fancyfoot[R]{}									% Pagenumbering
     \renewcommand{\headrulewidth}{0pt}			% Remove header underlines
     \renewcommand{\footrulewidth}{0pt}				% Remove footer underlines
     \setlength{\headheight}{13.6pt}
