@@ -43,16 +43,21 @@ del CMOS ($V_{OH}~y~V_{OL}$)\footnote{Datos sacados de la datasheet: ver figura 
 Para el CMOS este comportamiento puede deberse a que tienen altas impedancias de entrada por lo que al dejar una entrada flotante
 funciona como antena, induciéndose corrientes, por ejemplo, por ruido, lo que genera tensiones a la entrada de la compuerta
 ocasionando un nivel de tensión high o low incierto a la salida.
-A continuación se implementó el circuito de la figura \ref{fig:circuito}. No se observó 
+Para que no ocurra ésto, el fabricante recomienda conectar las entradas que no se utilizan ya sea a GND o a Vcc, 
+para evitar estados operacionales indefinidos.\footnote{Referirse a la hoja de datos del fabricante: \url{http://www.ti.com/lit/ds/symlink/sn54hc32-sp.pdf}.}\\\newline
+
+A continuación se implementó el circuito de la figura \ref{fig:circuito}. No se observó ningún comportamiento indeseado, 
+sin embargo, si se observan las figuras \ref{fig:ttl-threshold} y \ref{fig:cmos-threshold} que muestran los niveles de tensión high y low de entrada y salida 
+para una compuerta TTL y CMOS ($V_{OH}/V_{OL}~y~V_{IH}/V_{IL}$), se pueden encontrar problemas si, por ejemplo, 
+la tensión de entrada al circuito es de 3V; ésto ocasionaría que la salida de la TTL estuviera entre los 2.4V-5V para un 1 lógico, 
+que podría presentar cierta incompatibilidad con los valores de tensión de entrada de la CMOS, ya que podría caer dentro de la zona indefinida, 
+resultando en una salida incierta del circuito.\\
+Posibles soluciones a este inconveniente serían utilizar mismas familias de compuertas, es decir, ambas TTL (LS) o CMOS (HC), lo que corrige estas ambigüedades.
 
 
 
-A floating TTL input usually acts as a HIGH input.
-Es decir una entrada flotante en un TTL es considerada como un 1 lógico a la entrada.
+Una entrada flotante en un TTL es considerada como un 1 lógico a la entrada.
 
-//justificar con hoja de datos, que dice q hay q ponerla a vcc o ground(dependiendo esta eleccion de la funcion del cicuito), o sea tiene q ser una tension conocida
-Ademas que al cmos, al dejarlo flotante se calienta el integrado porq le estas exigiendo (metiendo) mas corriente.
-como que tira hasta 0.8v a la salida que segun la datasheet es basura (porq esta entre vol y voh que es 0.2-2.4, creo)
 
 \begin{figure}[H]
     \begin{minipage}{.49\linewidth}
@@ -70,11 +75,10 @@ como que tira hasta 0.8v a la salida que segun la datasheet es basura (porq esta
 \end{figure}
 
 
-, another solution is to connect unused inputs to an input of the same gate that is in use. The function of the device
+another solution is to connect unused inputs to an input of the same gate that is in use. The function of the device
 is unaffected. This circuit arrangement can be used equally well with AND (NAND) as with OR (NOR) gates 
 NOTA: seccion Unused Inputs http://www.ti.com/lit/an/sdya009c/sdya009c.pdf
 
 %leer esto https://www.fairchildsemi.com/application-notes/AN/AN-363.pdf
 leer tambien esto http://www.ti.com/lit/an/scba004d/scba004d.pdf
 
-cuando le entro al  circuito con 1.4V sale cualquier cosa, como se puede ver en la figura "circuito sale mal" (tambien pasa con los dos LS asi q no se si chamuyar coon esto)
