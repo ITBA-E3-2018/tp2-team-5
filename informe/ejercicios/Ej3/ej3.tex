@@ -31,17 +31,17 @@
 \par
 El objetivo fue implementar la tabla de verdad con compuertas lógicas discretas. 
 Se sabe que simplificando ya sea con máxterminos o mintérminos se llega a la expresión mínima, es decir a la máxima simplificación; 
-por lo que se procedió a simplificar con mintérminos, resultando en la siguiente expresión, acorde al mapa de Karnaugh \ref{fig:mapaKarnaughConGlitches}:
+por lo que se procedió a simplificar con mintérminos, resultando en lo siguiente, acorde al mapa de Karnaugh \ref{fig:mapaKarnaughConGlitches}:
 \vspace{4mm}
 \begin{equation}
     Y=\overline{A}B+\overline{B}C
     \vspace{5mm}
 \end{equation}
-La expresión anterior es la que representa el menor costo pues se implementa con la menor cantidad posible de compuertas.
+La expresión anterior es la que representa el menor costo pues se implementa con la menor cantidad posible de compuertas (ver figura \ref{fig:circuito-con-glitches}).
 Sin embargo, se observa que al transicionar entre los grupos $(A,~B,~C)=(0,~1,~1)$, -en verde-, y $(A,~B,~C)=(0,~0,~1)$, -en azul-, es decir variando el estado de la variable B, el comportamiento será incierto, pues no está cubierta por ningún mintérmino.
 Para medir ésto, se conectó la entrada A a masa, y C, a +Vcc (5~V). La señal B se simuló con una onda cuadrada generando 
-así la transición entre los susodichos estados. Esto se puede ver en la figura \ref{fig:glitch}; la entrada es la señal amarilla, y la verde la salida, que se encuentra en un nivel de tensión alta, es decir un 1 lógico, como era de esperar. 
-Por otro lado, cuando B varía de 5 V a 0 V, se observa un comportamiento indeseado que se debe a los tiempos de delay propios de las compuertas lógicas.
+así la transición entre los susodichos estados. Esto se puede ver en la figura \ref{fig:glitch}; la entrada es la señal amarilla, y la verde la salida, que se encuentra en un nivel de tensión alto, es decir un 1 lógico, como era de esperar. 
+Por otro lado, cuando B varía de 5 V a 0 V, se observa un comportamiento indeseado, un glitch, que se debe a los tiempos de delay propios de las compuertas lógicas.
 
 \vspace{5mm}
 \begin{figure}[H]
@@ -56,14 +56,14 @@ Por otro lado, cuando B varía de 5 V a 0 V, se observa un comportamiento indese
     \begin{minipage}{.5\linewidth}
         \centering
         \includegraphics[width=\linewidth]{./glitch.png}
-        \caption{Glitch observado señalado en rojo al variar la señal B.}
+        \caption{Glitch observado señalado en rojo al variar el estado de B.}
         \label{fig:glitch}
     \end{minipage}
 \end{figure}
 
 \vspace{5mm}
 Para evitar este incoveniente lo que se puede hacer es agregar un grupo al mapa de Karnaugh entre los estados problemáticos, 
-para asegurarse que la salida, al transicionar entre los mismos, se mantenga siempre en el mismo valor.
+para asegurarse que la salida, al transicionar entre los mismos, se mantenga siempre en el mismo valor; ver figura \ref{fig:mapaKarnaughSinGlitches}.
 Entonces, agregando un mintérmino, la función queda simplificada a:
 \vspace{4mm}
 \begin{equation}
@@ -85,8 +85,8 @@ Lo que da como resultado el circuito \ref{fig:circuito-sin-glitches}, que si bie
             \implicantcostats{4}{6}{blue}
             \implicant{4}{5}{red}      //para el caso de hazards
         \end{Karnaughvuit}
-        \label{table:mapaKarnaughSinGlitches}
         \caption{Mapa de Karnaugh sin glitches.}
+        \label{fig:mapaKarnaughSinGlitches}
     \end{center}
     \end{minipage}
     \begin{minipage}{.5\linewidth}
