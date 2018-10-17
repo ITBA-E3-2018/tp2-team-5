@@ -1,51 +1,35 @@
-%% LyX 2.2.2 created this file.  For more info, see http://www.lyx.org/.
-%% Do not edit unless you really know what you are doing.
-\documentclass[english]{article}
-\usepackage[T1]{fontenc}
-\usepackage[latin9]{inputenc}
-\usepackage{float}
-\usepackage{graphicx}
+\section{Implementaci√≥n de Compuertas Not con Transistores}
 
-\makeatletter
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
-%% Because html converters don't know tabularnewline
-\providecommand{\tabularnewline}{\\}
-
-\makeatother
-
-\usepackage{babel}
-\begin{document}
-
-\part{ELECTRONICA III - EJERCICIO 1}
-
-\section{ImplementaciÛn de Compuertas Not con Transistores}
-
-En esta primer parte del artÌculo se propondr· a realizar una compuerta
-b·sica como es la inversora, o tambiÈn llamada ``NOT'', con transistores.
-Los diseÒos que se muestran a continuaciÛn son cuatro: dos variantes
+En esta primera parte del art√≠culo se propondr√° realizar una compuerta
+b√°sica como es la inversora, o tambi√©n llamada "NOT", con transistores.
+Los dise√±os que se muestran a continuaci√≥n son cuatro: dos variantes
 con transistores bjt y otras dos con transistores mosfet.
 
 \begin{figure}[H]
 \begin{centering}
-\includegraphics[scale=0.4]{mosNOT.PNG}\includegraphics[scale=0.4]{npnNOT.PNG}\includegraphics[scale=0.4]{pnpNOT.PNG}
+\includegraphics[scale=0.4]{mosNOT.PNG}
+\qquad
+\includegraphics[scale=0.4]{npnNOT.PNG}
+\qquad
+\includegraphics[scale=0.4]{pnpNOT.PNG}
+\qquad
 \par\end{centering}
-\caption{DiseÒo de NOT con Transistores}
+\caption{Dise√±o de NOT con Transistores.}
 
 \end{figure}
 
-Como se muestra en las imagenes, dentro de la variante de los mosfet
-se utilizÛ el transistor NMOS y el PMOS. En cuanto a los transistores
+Como se muestra en las im√°genes, dentro de la variante de los mosfet
+se utiliz√≥ el transistor NMOS y el PMOS. En cuanto a los transistores
 bipolares, se propuso un modelo con NPN y otro con PNP.
 
-Una vez materializados estos diseÒos, se procediÛ a medir algunos
-par·metros que caracterizan a la compuerta lÛgica. Vale aclarar que
+Una vez materializados estos dise√±os, se procedi√≥ a medir algunos
+par√°metros que caracterizan a la compuerta l√≥gica. Vale aclarar que
 las mediciones se realizaron solo para las compuertas con transistores
 bipolares.
-
-A continuaciÛn se muestran los resultados de las mediciones sin carga:
-
-\begin{table}
+\vspace{5mm}
+A continuaci√≥n se muestran los resultados de las mediciones sin carga:
+\begin{center}
+\begin{table}[H]
 \begin{tabular}{|c|c|c|}
 \hline 
 sin carga & NPN & PNP\tabularnewline
@@ -61,7 +45,7 @@ Low-level output (V) & 0,075 & 0,05\tabularnewline
 \hline 
 High Level Noise Margin (V) & 3,930 & 0,43\tabularnewline
 \hline 
-\end{tabular}%
+\end{tabular}\hfill    
 \begin{tabular}{|c|c|c|}
 \hline 
 sin carga & NPN & PNP\tabularnewline
@@ -78,13 +62,14 @@ Transition tiem High-Low & 1,470 us & 89 ns\tabularnewline
 Transition time Low-High & 98,500 us & 1,400 us\tabularnewline
 \hline 
 \end{tabular}
-
-\caption{Mediciones - Par·metros Compuerta NOT - sin carga}
+\caption{Mediciones - Par√°metros Compuerta NOT - sin carga}
 \end{table}
+\end{center}
 
 Luego se realizaron las mismas mediciones con una carga capacitiva:
 
-\begin{table}
+\begin{center}
+\begin{table}[H]
 \begin{tabular}{|c|c|c|}
 \hline 
 con carga & NPN & PNP\tabularnewline
@@ -100,7 +85,7 @@ Low-level output (V) & 0,074 & 0,06\tabularnewline
 \hline 
 High Level Noise Margin (V) & 3,99 & 0,42\tabularnewline
 \hline 
-\end{tabular}%
+\end{tabular}\hfill
 \begin{tabular}{|c|c|c|}
 \hline 
 con carga & NPN & PNP\tabularnewline
@@ -117,11 +102,9 @@ Transition tiem High-Low & 5,700 us & 164 ns\tabularnewline
 Transition time Low-High & 196 ns & 11,350 us\tabularnewline
 \hline 
 \end{tabular}
-
-\caption{Mediciones - Par·metros Compuerta NOT - con carga}
+\caption{Mediciones - Par√°metros Compuerta NOT - con carga}
 \end{table}
-
+\end{center}
 Todas las mediciones se realizaron con Vcc igual a 5 Volts. En cuanto
-a las mediciones de tiempo de propagaciÛn y de transiciÛn, para estas
-se utilizÛ una excitaciÛn de onda cuadrada de 1,92 KHz.
-\end{document}
+a las mediciones de tiempo de propagaci√≥n y de transici√≥n, para estas
+se utiliz√≥ una excitaci√≥n de onda cuadrada de 1,92 KHz.
