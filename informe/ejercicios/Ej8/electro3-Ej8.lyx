@@ -1,0 +1,914 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Part
+Tp Electrónica III
+\end_layout
+
+\begin_layout Section
+Sensor de Distancia - Implementación con HC-SR04
+\end_layout
+
+\begin_layout Standard
+En esta sección del artículo se propone el diseño de un circuito que interaccion
+e con el sensor de distancia 
+\begin_inset Quotes eld
+\end_inset
+
+HC-SR04
+\begin_inset Quotes erd
+\end_inset
+
+, de manera que sea capaz de activar su funcionamiento y a su vez manipular
+ los datos que el sensor provee a partir de sus mediciones.
+ 
+\end_layout
+
+\begin_layout Subsection
+Breve Descripción de Funcionamiento del HC SR04
+\end_layout
+
+\begin_layout Standard
+El sensor HC SR04 presenta cuatro pines, de los cuales dos de ellos son
+ para la alimentación y la conexión a tierra, mientras que los dos restantes
+ representan la entrada y la salida del sensor.
+ La entrada (pin de 
+\begin_inset Quotes eld
+\end_inset
+
+trigger
+\begin_inset Quotes erd
+\end_inset
+
+) permite disparar una medición del sensor, para lo cual debe enviarse a
+ este pin un pulso (señal de tensión) de un mínimo de 
+\begin_inset Formula $10\mu s$
+\end_inset
+
+ de duración.
+ Por otro lado, luego de dispararse y realizarse la medición, la salida
+ (pin de 
+\begin_inset Quotes eld
+\end_inset
+
+echo
+\begin_inset Quotes erd
+\end_inset
+
+) devuelve un pulso de duración proporcional a la medición del sensor.
+\end_layout
+
+\begin_layout Standard
+En cuanto a la medición de distancia del sensor, esta se basa en la emisión
+ de una señal ultrasónica (al activar el pin de 
+\begin_inset Quotes eld
+\end_inset
+
+trigger
+\begin_inset Quotes erd
+\end_inset
+
+) que tiene la capacidad de 
+\begin_inset Quotes eld
+\end_inset
+
+rebotar
+\begin_inset Quotes erd
+\end_inset
+
+ al encontrar un objeto en su camino y así poder generar una señal de retorno
+ que es recibida nuevamente por el sensor.
+ Luego, el sensor calcula el tiempo que tardó en retornar la señal ultrasónica
+ emitida y devuelve este resultado provocando un pulso de echo de la misma
+ duración que el tiempo calculado anteriormente.
+\end_layout
+
+\begin_layout Standard
+Entonces, lo que mide el sensor enrealidad es tiempo que puede ser utilizado
+ para calcular una distancia dado que la velocidad de propagación de la
+ señal ultrasónica emitida por el sensor es de aproximadamente 
+\begin_inset Formula $343\frac{m}{s}$
+\end_inset
+
+ (velocidad del sonido).
+\end_layout
+
+\begin_layout Standard
+Por último, una especifiación importante es que el sensor es capaz de realizar
+ mediciones para objetos que se encuentran a una distancia de entre 3 y
+ 450 centímetros del mismo, en un ángulo de visión de 15 grados.
+\end_layout
+
+\begin_layout Subsection
+Diseño del Circuito de Implementación
+\end_layout
+
+\begin_layout Standard
+A continuación se presenta el 
+\begin_inset Quotes eld
+\end_inset
+
+pin out
+\begin_inset Quotes erd
+\end_inset
+
+ del circuito a diseñar:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Pin Out - Top Layer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Como se ve en la imagen anterior el diseño debe tener en cuenta un pin de
+ trigger como entrada para activar una medición, el cual a su vez es habilitado
+ o deshabilitado por un pin de 
+\begin_inset Quotes eld
+\end_inset
+
+enable
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Además, se debe contar con una salida de 8 bits que represente en binario
+ el tiempo calculado por el sensor 
+\begin_inset Quotes eld
+\end_inset
+
+HC SR04
+\begin_inset Quotes erd
+\end_inset
+
+ en unidades de microsegundos.
+ Por último, se debe implementar un pin de salida (
+\begin_inset Quotes eld
+\end_inset
+
+meas_ready
+\begin_inset Quotes erd
+\end_inset
+
+) que indique si la última medición disparada logró su finalización.
+ 
+\end_layout
+
+\begin_layout Standard
+Para el diseño se procuró indentificar las distintas etapas necesarias para
+ la resolución del problema planteado para luego avocarse a realizar circuitalme
+nte cada una de ellas.
+ Luego de analizar los requerimientos del circuito se propusieron los siguientes
+ módulos: habilitación del disparo, activación del disparo, procesamiento
+ del echo, generación de clock, set/reset de 
+\begin_inset Quotes eld
+\end_inset
+
+meas_ready
+\begin_inset Quotes erd
+\end_inset
+
+.
+ En los siguientes apartados se analizarán cada una de las etapas por separado.
+\end_layout
+
+\begin_layout Subsubsection
+Habilitación de Disparo
+\end_layout
+
+\begin_layout Standard
+Este módulo tiene como objetivo habilitar el disparo de la medición.
+ Para que esto suceda es necesario que los pines de 
+\begin_inset Quotes eld
+\end_inset
+
+trigger_enable
+\begin_inset Quotes erd
+\end_inset
+
+ y 
+\begin_inset Quotes eld
+\end_inset
+
+trigger
+\begin_inset Quotes erd
+\end_inset
+
+ se encuentren encendidos pero además debe asegurarse que no exista ninguna
+ medición en proceso.
+ Por otro lado, el módulo debe tener como salida un pulso invertido menor
+ a 
+\begin_inset Formula $50\mu s$
+\end_inset
+
+ que se utilizará en el módulo de activación de disparo como se verá más
+ adelante (pulso invertido hace referencia a que la salida debe mantenerse
+ en 
+\begin_inset Quotes eld
+\end_inset
+
+1
+\begin_inset Quotes erd
+\end_inset
+
+ cuando no hay un disparo habilitado, pero debe imponerse un 
+\begin_inset Quotes eld
+\end_inset
+
+0
+\begin_inset Quotes erd
+\end_inset
+
+ lógico cuando se habilita una medición).
+ 
+\end_layout
+
+\begin_layout Standard
+Dadas estas especificaciones del módulo se planteó el siguiente circuito:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Diseño Circuital - Habilitación de Disparo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Activación de Disparo
+\end_layout
+
+\begin_layout Standard
+Una vez habilitado el disparo debe activarse el mismo enviando un pulso
+ de un ancho mínimo de 
+\begin_inset Formula $10\mu s$
+\end_inset
+
+ al pin de 
+\begin_inset Quotes eld
+\end_inset
+
+trigger
+\begin_inset Quotes erd
+\end_inset
+
+ del HC SR04.
+ Para esto se decidió usar un multivibrador monoestable, logrado mediante
+ el integrado 
+\begin_inset Quotes eld
+\end_inset
+
+LM555
+\begin_inset Quotes erd
+\end_inset
+
+.
+ El pin out del circuito integrado es el siguiente:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Pin Out - LM555
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Vale aclarar, que los amplificadores operacionales representados en la imagen
+ de la derecha simulan la función de comparación.
+\end_layout
+
+\begin_layout Standard
+Para utilizar el LM555 (el nombre 
+\begin_inset Quotes eld
+\end_inset
+
+555
+\begin_inset Quotes erd
+\end_inset
+
+ es debido al divisor resistivo de 3 resistencias de 
+\begin_inset Formula $5K\Omega$
+\end_inset
+
+ ) en configuración monoestable se procederá a realizar el siguiente circuito:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Configuración Monoestable - LM555
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Como se puede deducir a partir de las imagenes anteriores, al excitar el
+ pin de trigger con una tensión mayor a 
+\begin_inset Formula $\frac{1}{3}$
+\end_inset
+
+ de 
+\begin_inset Quotes eld
+\end_inset
+
+Vcc
+\begin_inset Quotes erd
+\end_inset
+
+, se activará la salida a la vez que se permitirá la carga del capacitor
+ 
+\begin_inset Quotes eld
+\end_inset
+
+C1
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Luego, al llegar el capacitor a una tensión mayor a 
+\begin_inset Formula $\frac{2}{3}$
+\end_inset
+
+ de Vcc se reseteará la salida debido a la comparación del pin de threshold,
+ y el capacitor se descargará nuevamente mediante la conexión a tierra.
+ Esto produce que la salida se encienda tan solo durante el lapso de tiempo
+ que el capacitor tarda en cargarse hasta 
+\begin_inset Formula $\frac{2}{3}$
+\end_inset
+
+ de Vcc.
+ Por ende, la duración del pulso se puede calcular de la siguiente manera:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $V_{capacitor}=V_{cc}(1-e^{\frac{-t}{R_{1}C_{1}}})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Luego, 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $V_{capacitor}=\frac{2}{3}V_{cc}\Longleftrightarrow e^{\frac{-t}{R_{1}C_{1}}}=\frac{1}{3}\Longleftrightarrow t=ln(3)R_{1}C_{1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dicho esto, para lograr un pulso de 
+\begin_inset Formula $50\mu s$
+\end_inset
+
+ (esta duración de pulso es adecuada ya que es 5 veces mayor la ancho mínimo
+ del pulso requerido por el sensor HC SR04) se puede utilizar una resistencia
+ de 
+\begin_inset Formula $5K\Omega$
+\end_inset
+
+ y un capacitor de 
+\begin_inset Formula $10nF$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Procesamiento del Echo
+\end_layout
+
+\begin_layout Standard
+El módulo de procesamiento del 
+\begin_inset Quotes eld
+\end_inset
+
+echo
+\begin_inset Quotes erd
+\end_inset
+
+ es el encargado de convertir el pulso de duración variable, otorgado por
+ el sensor HC SR04, a un número binario de 8 bits.
+ Para esta conversión se utilizará un contador de bits cuya entrada se conectará
+ al pin de 
+\begin_inset Quotes eld
+\end_inset
+
+echo
+\begin_inset Quotes erd
+\end_inset
+
+ del sensor.
+ Suponiendo además que el contador reaccionará ante los flancos ascendentes
+ de un clock de frecuencia adecuada, se podrá lograr en el contador la cantidad
+ de veces que cabe un ciclo de clock en el ancho del pulso de 
+\begin_inset Quotes eld
+\end_inset
+
+echo
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Luego, para que el número de 8 bits represente el tiempo calculado por
+ el sensor en unidades de 100 microsegundos se puede utilizar el contador
+ con un clock de 
+\begin_inset Formula $10KHz$
+\end_inset
+
+ (período 
+\begin_inset Formula $T=\frac{1}{10000}s=100\mu s$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Por ùtlimo, para este módulo se debe tener en cuenta que el contador debe
+ comenzar la cuenta desde cero para cada medición.
+ Para lograr esto, se puede conectar el pin de reset del contador de 8 bits
+ al pin de trigger del HC SR04, ya que esto produciría que para el comienzo
+ de cada medición se imponga un 
+\begin_inset Quotes eld
+\end_inset
+
+reset
+\begin_inset Quotes erd
+\end_inset
+
+ del contador.
+\end_layout
+
+\begin_layout Subsubsection
+Generación de Clock
+\end_layout
+
+\begin_layout Standard
+Como se ha visto, para el módulo de procesamiento del echo es necesario
+ un clock de 
+\begin_inset Formula $10KHz$
+\end_inset
+
+.
+ La implementación de un clock puede realizarse de varias maneras, de las
+ cuales una es hacer uso nuevamente del 
+\begin_inset Quotes eld
+\end_inset
+
+LM555
+\begin_inset Quotes erd
+\end_inset
+
+ en configuración astable como se muestra a continuación:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Configuración Astable - LM555
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En esta configuración el capacitor 
+\begin_inset Quotes eld
+\end_inset
+
+C1
+\begin_inset Quotes erd
+\end_inset
+
+ comenzará descargado provocando que inicialmente la salida sea nula, sin
+ embargo comenzará a cargarse de forma que la tensión entre placas puede
+ modelarse mediante la siguiente expresión: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $V_{C1}=V_{cc}(1-e^{-\frac{t}{(R_{1}+R_{2})C_{1}}})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Luego, cuando la tensión del capacitor supere 
+\begin_inset Formula $\frac{1}{3}$
+\end_inset
+
+ de 
+\begin_inset Formula $V_{cc}$
+\end_inset
+
+ la salida se activará (será un 1 lógico) hasta que la tensión entre placas
+ del capacitor que se sigue cargando supere 
+\begin_inset Formula $\frac{2}{3}$
+\end_inset
+
+ de
+\begin_inset Formula $V_{cc}$
+\end_inset
+
+.
+ Una vez que se superan los dos tercios de 
+\begin_inset Formula $V_{cc}$
+\end_inset
+
+ la salida vuelve a anularse (cero lógico) y el capacitor comienza a descargarse
+ comportandose según lo describe la siguiente igualdad:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $V_{C1}=V_{cc}e^{-\frac{t}{R_{2}C_{1}}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La descarga se producirá hasta que la tensión vuelva a ser 
+\begin_inset Formula $\frac{1}{3}$
+\end_inset
+
+ de 
+\begin_inset Formula $V_{cc}$
+\end_inset
+
+ y logre activar nuevamente la salida.
+ Este proceso se repetirá sucesivamente hasta que se desconecte la alimentación
+ 
+\begin_inset Formula $V_{cc}$
+\end_inset
+
+, por ende, se logra obtener una señal cuadrada periódica que simule un
+ clock.
+ Además, esta señal se mantiene representando un 
+\begin_inset Quotes eld
+\end_inset
+
+1
+\begin_inset Quotes erd
+\end_inset
+
+ lógico durante el tiempo para el cual la tensión en el capacitor 
+\begin_inset Quotes eld
+\end_inset
+
+C1
+\begin_inset Quotes erd
+\end_inset
+
+ se mantiene cargandosé entre 
+\begin_inset Formula $\frac{1}{3}$
+\end_inset
+
+ y 
+\begin_inset Formula $\frac{2}{3}$
+\end_inset
+
+ de 
+\begin_inset Formula $V_{cc}$
+\end_inset
+
+, y representa, en cambio, un 
+\begin_inset Quotes eld
+\end_inset
+
+0
+\begin_inset Quotes erd
+\end_inset
+
+ lógico cuando se mantiene descargandose entre 
+\begin_inset Formula $\frac{2}{3}$
+\end_inset
+
+ y 
+\begin_inset Formula $\frac{1}{3}$
+\end_inset
+
+ de 
+\begin_inset Formula $V_{cc}$
+\end_inset
+
+.
+ A continuación se presenta el cálculo del tiempo que de encendido de la
+ señal (1 lógico) y del tiempo de apagado de la misma (0 lógico).
+\end_layout
+
+\begin_layout Standard
+Durante la carga:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $V_{C1}=\frac{1}{3}V_{cc}\Longleftrightarrow t=ln(\frac{3}{2})(R_{1}+R_{2})C_{1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $V_{C1}=\frac{2}{3}V_{cc}\Longleftrightarrow t=ln(3)(R_{1}+R_{2})C_{1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\Rightarrow t_{ON}=[ln(3)-ln(\frac{3}{2})][(R_{1}+R_{2})C_{1}]=ln(2)[(R_{1}+R_{2})C_{1}]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Durante la descarga:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $V_{C1}=\frac{1}{3}V_{cc}\Longleftrightarrow t=ln(3)R_{2}C_{1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $V_{C1}=\frac{2}{3}V_{cc}\Longleftrightarrow t=ln(\frac{3}{2})R_{2}C_{1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\Rightarrow t_{OFF}=[ln(3)-ln(\frac{3}{2})]R_{2}C_{1}=ln(2)R_{2}C_{1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dadas estos resultados análiticos, y considerando que en un clock se debe
+ cumplir que 
+\begin_inset Formula $t_{ON}=t_{OFF}$
+\end_inset
+
+, entonces se debe elegir una resistencia 
+\begin_inset Formula $R_{2}$
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+mucho mayor
+\begin_inset Quotes erd
+\end_inset
+
+ que 
+\begin_inset Formula $R_{1}$
+\end_inset
+
+ de manera que 
+\begin_inset Formula $R_{1}+R_{2}\simeq R_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Además, se a partir de lo calculado se obtiene que 
+\begin_inset Formula $f_{clock}=\frac{1}{t_{ON}+t_{OFF}}\simeq\frac{1}{2ln(2)R_{2}C_{2}}=\frac{1}{ln(4)R_{2}C_{2}}$
+\end_inset
+
+.
+ Luego, para un clock de 
+\begin_inset Formula $10KHz$
+\end_inset
+
+ se obtiene la siguiente relación entre los valores de los componentes:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\begin{cases}
+R_{2}\gg R_{1}\\
+R_{2}C_{2}\simeq7.2x10^{-5}
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Luego, esto se puede lograr con 
+\begin_inset Formula $R_{1}=1K\Omega$
+\end_inset
+
+, 
+\begin_inset Formula $R_{2}=72K\Omega$
+\end_inset
+
+ y 
+\begin_inset Formula $C_{1}=1nF$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Set/Reset de 
+\begin_inset Quotes eld
+\end_inset
+
+Meas_Ready
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Quotes eld
+\end_inset
+
+Meas_Ready
+\begin_inset Quotes erd
+\end_inset
+
+ es el pin de salida que indica si hay o no una medición en curso.
+ Para distinguir cuando se esta realizando una medición y cuando no, se
+ puede analizar la señal de echo que brinda el sensor HC SR04.
+\end_layout
+
+\end_body
+\end_document
