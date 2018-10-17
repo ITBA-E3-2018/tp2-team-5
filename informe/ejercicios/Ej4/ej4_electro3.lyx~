@@ -140,10 +140,6 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
 <features tabularvalignment="middle">
@@ -348,19 +344,161 @@ Mediciones - Resultados Obtenidos
 \end_layout
 
 \begin_layout Standard
-Estas mediciones se realizaron con una excitación de onda cuadrada de ASDAsñkdja
-sd Hz de frecuencia y con una alimentación de 5 Volts.
+Estas mediciones se realizaron con una excitación de onda cuadrada de 500
+ Hz de frecuencia y con una alimentación de 5 Volts.
 \end_layout
 
 \begin_layout Standard
-Luego de realizar estas mediciones se procedió a aumentar la frecuencia
- del generador a 100 KHz y se observó (¿que se observo en la respuesta y
- que se observo en la alimentación?).
+Con respecto al tiempo de propagación con el circuito de carga, es esperable
+ que este sea mayor como lo indicó la medición ya que la carga presenta
+ una componente capacitiva que aletarga la salida medida.
 \end_layout
 
 \begin_layout Standard
-Por último, se colocó un capacitor entre los terminales de ASDAKÑSDJA y
- se pudo notar ASDKJASÑDJASD.
+Luego de realizar estas mediciones, se procedió a aumentar la frecuencia
+ del generador a 100 KHz y se midió tensión de alimentación.
+ Lo que se observó fue que esta no resultaba ser constante.
+ Por consiguiente, se procedió a colocar un capacitor de 
+\begin_inset Formula $100nF$
+\end_inset
+
+ entre los bornes de la alimentación (entre 
+\begin_inset Quotes eld
+\end_inset
+
+Vcc
+\begin_inset Quotes erd
+\end_inset
+
+ y 
+\begin_inset Quotes eld
+\end_inset
+
+Ground
+\begin_inset Quotes erd
+\end_inset
+
+) a fin de comparar resultados.
+ A continuación se presentan las dos mediciones de la tensión se alimentación
+ (con capacitor y sin capacitor):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename AlimentacionConDesacople.png
+	scale 40
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename AlimentacionSinDesacople.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Mediciones - Tensión de Alimentación
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En la medición sin capacitor se observa un pico para el cual la tensión
+ de alimentación disminuye, pero que no aparece en la medición con capacitor.
+ Esto se puede explicar debido a que el capacitor contrarresta las inductancias
+ que existen debido a las conexiones físicas y además el capacitor (si es
+ lo suficientemente grande) es capaz de otorgar picos de corriente que pueden
+ requerir los transistores del integrado, sin afectar la tensión de alimentación.
+\end_layout
+
+\begin_layout Standard
+Además, al agregar el capacitor se pudo observar un cambio en la forma de
+ la respuesta de la 74HC02, siendo esta sub-amortiguada con sobre pico al
+ no colocar el capacitor, pero si se colocaba el capacitor esta tendía a
+ ser sobre amortiguada sin sobre pico.
+ A continuación se muestran dos imagenes que plasman la diferencia de la
+ salida de la compuerta debida al capacitor de 
+\begin_inset Formula $100nF$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename SalidaDeHConDesacople.png
+	scale 40
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename SalidaDeHCSinDesacople.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Respuesta de 74HC02 Según Acople Capacitivo 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \end_body

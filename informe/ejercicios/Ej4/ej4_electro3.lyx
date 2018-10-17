@@ -434,5 +434,68 @@ En la medición sin capacitor se observa un pico para el cual la tensión
  requerir los transistores del integrado, sin afectar la tensión de alimentación.
 \end_layout
 
+\begin_layout Standard
+Además, al agregar el capacitor se pudo observar un cambio en la forma de
+ la respuesta de la 74HC02, siendo esta sub-amortiguada con sobre pico al
+ no colocar el capacitor, pero si se colocaba el capacitor esta tendía a
+ ser sobre amortiguada sin sobre pico.
+ A continuación se muestran dos imagenes que plasman la diferencia de la
+ salida de la compuerta debida al capacitor de 
+\begin_inset Formula $100nF$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename SalidaDeHConDesacople.png
+	scale 40
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename SalidaDeHCSinDesacople.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Respuesta de 74HC02 Según Acople Capacitivo 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \end_body
 \end_document
