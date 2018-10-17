@@ -482,16 +482,14 @@ A continuación se presenta el esquemático del diseño del módulo con componen
 
 \begin_layout Standard
 \begin_inset Float figure
-placement H
 wide false
 sideways false
 status collapsed
 
 \begin_layout Plain Layout
-\align center
 \begin_inset Graphics
 	filename esquemaProcesamientoDeEcho.PNG
-	scale 60
+	scale 40
 
 \end_inset
 
@@ -499,7 +497,6 @@ status collapsed
 \end_layout
 
 \begin_layout Plain Layout
-\align center
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -779,7 +776,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename generadorDePulsoMenor50us.PNG
-	scale 60
+	scale 40
 
 \end_inset
 
@@ -878,7 +875,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename habilitacionDeDisparo.PNG
-	scale 60
+	scale 40
 
 \end_inset
 
