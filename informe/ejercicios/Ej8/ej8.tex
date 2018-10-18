@@ -1,24 +1,24 @@
 \section{Sensor de Distancia - Implementación con HC-SR04}
 
 En esta sección del artículo se propone el diseño de un circuito que
-interaccione con el sensor de distancia "HC-SR04'', de manera que
+interaccione con el sensor de distancia ''HC-SR04'', de manera que
 sea capaz de activar su funcionamiento y a su vez manipular los datos
 que el sensor provee a partir de sus mediciones. 
 
-\subsection{Breve Descripción de Funcionamiento del HC SR04}
+\subsection{Funcionamiento del HC SR04}
 
 El sensor HC SR04 presenta cuatro pines, de los cuales dos de ellos
 son para la alimentación y la conexión a tierra, mientras que los
 dos restantes representan la entrada y la salida del sensor. La entrada
-(pin de "trigger'') permite disparar una medición del sensor, para
+(pin de ''trigger'') permite disparar una medición del sensor, para
 lo cual debe enviarse a este pin un pulso (señal de tensión) de un
 mínimo de $10\mu s$ de duración. Por otro lado, luego de dispararse
-y realizarse la medición, la salida (pin de "echo'') devuelve un
+y realizarse la medición, la salida (pin de ''echo'') devuelve un
 pulso de duración proporcional a la medición del sensor.
 
 En cuanto a la medición de distancia del sensor, esta se basa en la
-emisión de una señal ultrasónica (al activar el pin de "trigger'')
-que tiene la capacidad de "rebotar'' al encontrar un objeto en
+emisión de una señal ultrasónica (al activar el pin de ''trigger'')
+que tiene la capacidad de ''rebotar'' al encontrar un objeto en
 su camino y así poder generar una señal de retorno que es recibida
 nuevamente por el sensor. Luego, este calcula el tiempo que tardó
 en retornar la señal ultrasónica emitida y devuelve el resultado
@@ -37,7 +37,7 @@ de entre 3 y 450 centímetros del mismo, en un ángulo de visión de
 
 \subsection{Diseño del Circuito de Implementación}
 
-A continuación se presenta el "pin out'' del circuito a diseñar:
+A continuación se presenta el pin out del circuito a diseñar:
 
 \begin{figure}[H]
 \centering
@@ -47,10 +47,10 @@ A continuación se presenta el "pin out'' del circuito a diseñar:
 
 Como se ve en la imagen anterior el diseño debe tener en cuenta un
 pin de trigger como entrada para activar una medición, el cual a su
-vez es habilitado o deshabilitado por un pin de "enable''. Además,
+vez es habilitado o deshabilitado por un pin de \textit{enable}. Además,
 se debe contar con una salida de 8 bits que represente en binario
-el tiempo calculado por el sensor "HC SR04'' en unidades de microsegundos.
-Por último, se debe implementar un pin de salida ("meas\_ready'')
+el tiempo calculado por el sensor HC SR04 en unidades de microsegundos.
+Por último, se debe implementar un pin de salida (\textit{meas\_ready})
 que indique si la última medición disparada logró su finalización. 
 
 Para el diseño se procuró identificar las distintas etapas necesarias
@@ -58,7 +58,7 @@ para la resolución del problema planteado para luego avocarse a realizar
 circuitalmente cada una de ellas. Luego de analizar los requerimientos
 del circuito se propusieron los siguientes módulos: habilitación del
 disparo, activación del disparo, procesamiento del echo, generación
-de clock, set/reset de "meas\_ready''. El diagrama en bloques del
+de clock, set/reset de (\textit{meas\_ready}). El diagrama en bloques del
 proyecto a realizar se puede representar con la siguiente imagen:
 
 \begin{figure}[H]
@@ -73,28 +73,28 @@ al sensor.
 
 A continuación se desarrollará sobre cada módulo en particular, y
 dado que lo único que no se diseñará en este proyecto es el sensor
-HC SR04, se comenzará analizando los módulos más "cercanos'' al
-sensor y particularmente con la etapa "post-sensor'', siguiendo
-luego con la etapa "pre-sensor''.
+HC SR04, se comenzará analizando los módulos más ''cercanos'' al
+sensor y particularmente con la etapa ''post-sensor'', siguiendo
+luego con la etapa ''pre-sensor''.
 
 \subsection{Etapa Post-Sensor}
 
-La etapa "post-sensor'' cuenta con los módulos de "procesamiento
-de la señal del sensor'' y de "almacenamiento de los datos procesados'',
+La etapa ''post-sensor'' cuenta con los módulos de ''procesamiento
+de la señal del sensor'' y de ''almacenamiento de los datos procesados'',
 los cuales se analizarán a continuación.
 
 \subsubsection{Procesamiento del Echo}
 
 Luego de que el sensor haya realizado la medición, el circuito cuenta
-con la señal de "echo'' del mismo que es la que debe analizar.
-El módulo de procesamiento del "echo'' es el encargado de convertir
+con la señal de ''echo'' del mismo que es la que debe analizar.
+El módulo de procesamiento del ''echo'' es el encargado de convertir
 el pulso de duración variable, otorgado por el sensor HC SR04, a un
 número binario de 8 bits. Para esta conversión se utilizará un contador
-de al menos 8 bits cuya entrada se conectará al pin de "echo''
+de al menos 8 bits cuya entrada se conectará al pin de ''echo''
 del sensor. Suponiendo además que el contador reaccionará ante los
 flancos ascendentes de un clock de frecuencia adecuada, se podrá lograr
 en el contador la cantidad de veces que cabe un ciclo de clock en
-el ancho del pulso de "echo''. Luego, para que el número de 8 bits
+el ancho del pulso de ''echo''. Luego, para que el número de 8 bits
 represente el tiempo calculado por el sensor en unidades de 100 microsegundos
 se puede utilizar el contador con un clock de $10KHz$ (período $T=\frac{1}{10000}s=100\mu s$).
 
@@ -103,13 +103,13 @@ a la máxima que se puede representar con 8 bits se podría implementar
 un bit extra que indique este problema con el rango de representación.
 Es decir, si el bit extra se encuentra encendido significa que la
 medición se fue de rango y carece de sentido. Este bit se puede denominar
-como "bit de out of range''.
+como ''bit de out of range''.
 
 Por útlimo, para este módulo se debe tener en cuenta que el contador
 debe comenzar la cuenta desde cero para cada medición. Para lograr
 esto, se puede conectar el pin de reset del contador de 8 bits al
 pin de trigger del HC SR04, ya que esto produciría que para el comienzo
-de cada medición se imponga un "reset'' del contador.
+de cada medición se imponga un ''reset'' del contador.\newline
 
 A continuación se presenta el esquemático del diseño del módulo con
 componentes discretos:
@@ -117,19 +117,19 @@ componentes discretos:
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.7]{esquemaProcesamientoDeEcho.PNG}
-\caption{Esquema del Módulo "Procesamiento del Echo''}
+\caption{Esquema del Módulo ''Procesamiento del Echo''}
 \end{figure}
 
 Notar que el contador que se muestra en la figura es de 12 bits, lo
 cual cumple con los requerimientos de diseño.
 
 En cuanto al clock, su implementación se analizará en el apartado
-de "módulos extras''.
+de ''módulos extras''.
 
 Por otro lado, el echo también define si se está realizando o no una
-medición, por ende el módulo debe tener como salida el pin de meas\_ready.
+medición, por ende el módulo debe tener como salida el pin de (\textit{meas\_ready}).
 El estado de este pin será definido únicamente por el estado del echo
-y por el estado del pin de "out of range''.
+y por el estado del pin de \textit{out of range}.
 
 \subsubsection{Almacenamiento de la información Procesada}
 
@@ -160,11 +160,11 @@ una nueva.
 
 \subsection{Etapa Pre-Sensor}
 
-La etapa "pre-sensor'' debe ser capaz de activar el sensor correctamente,
+La etapa ''pre-sensor'' debe ser capaz de activar el sensor correctamente,
 por ende se comenzarán desarrollando los módulos más cercanos al sensor
 (dado que es el sensor el que impone los requerimientos).
 
-Los módulos de esta etapa son: "activación de disparo'' y "habilitación
+Los módulos de esta etapa son: ''activación de disparo'' y ''habilitación
 de disparo''.
 
 \subsubsection{Activación de Disparo}
@@ -174,30 +174,30 @@ del mismo) enviar un pulso de duración mayor a $10us$. Por ende el
 módulo de activación de disparo debe imponer un pulso con estas características
 a su salida en caso de que se indique la activación del disparo medición.
 Esta indicación sobre la activación del disparo conformaría la entrada
-del módulo y tan solo basta con que sea un bit que represente un "1''
-lógico en caso de activar un disparo o un "0'' en caso de no pretender
+del módulo y tan solo basta con que sea un bit que represente un ''1''
+lógico en caso de activar un disparo o un ''0'' en caso de no pretender
 una medición.\newline
 
 Hasta aquí se han indicado la entrada y la salida del módulo, pero
 debe aclararse también que la medición debe activarse (generación
 del pulso mayor a $10us$) una sola vez cuando la entrada este encendida
-("1'' lógico). Es decir que el módulo debe ser capaz de evitar
-el efecto llamado "retriggering''. Para esto, el módulo solo debe
+(''1'' lógico). Es decir que el módulo debe ser capaz de evitar
+el efecto llamado ''retriggering''. Para esto, el módulo solo debe
 activar la medición ante el flanco ascendente de la entrada.
 
 Dicho esto, para generar la salida especificada se utilizará el circuito
-integrada "LM555'' en configuración monoestable que genere un pulso
+integrada ''LM555'' en configuración monoestable que genere un pulso
 5 veces mayor (en términos de duración) que el mínimo especificado,
 es decir, de $50us$. Esta configuración será abordada en el apartado
-de "módulos extras'', pero es importante tener en cuenta que para
+de ''módulos extras'', pero es importante tener en cuenta que para
 lograr que la configuración funcione correctamente es necesario ingresar
-a este con un pulso de menor a $50us$ y además debe ser "invertido'',
-es decir que el estado que debe ser menor a $50us$ es el "0''
+a este con un pulso de menor a $50us$ y además debe ser ''invertido'',
+es decir que el estado que debe ser menor a $50us$ es el ''0''
 lógico.
 
 Luego, se decidió implementar un circuito conformado por una resistencia
 y un capacitor que ante la entrada genere una señal análogica la cual
-mediante una compuerta de tipo "schmitt trigger'' se pueda traducir
+mediante una compuerta de tipo ''schmitt trigger'' se pueda traducir
 en un pulso de ancho configurable por el valor de la resistencia y
 el capacitor. A continuación se presenta un esquema del circuito mencionado:
 
@@ -214,7 +214,7 @@ genera un pulso de tensión positiva ante un flanco ascendente de la
 entrada, pero también genera un pulso de tensión negativa ante el
 flanco descendente de la misma y es para filtrar este último pulso
 que existe el diodo en el esquema. En particular, el diodo debe ser
-de tipo "schotcky'' para no producir caidas de tensión elevadas.
+de tipo ''schotcky'' para no producir caidas de tensión elevadas.
 
 Por último, cabe mencionar que el pulso generado por la configuración
 presentada en la figura también se podría ajustar para ingresarlo
@@ -225,9 +225,9 @@ para mayor precisión en el ancho del pulso enviado al sensor.
 \subsubsection{Habilitación de Disparo}
 
 Este módulo tiene como objetivo habilitar el disparo de la medición.
-Para que esto suceda es necesario que los pines de "trigger\_enable''
-y "trigger'' se encuentren encendidos pero además debe asegurarse
-que no exista ninguna medición en proceso.
+Para que esto suceda es necesario que los pines de \textit{trigger\_enable}
+y \textit{trigger} se encuentren encendidos pero además debe asegurarse
+que no exista ninguna medición en proceso.\newline
 
 Dadas estas especificaciones del módulo se planteó el siguiente circuito:
 
@@ -240,16 +240,16 @@ Dadas estas especificaciones del módulo se planteó el siguiente circuito:
 
 \subsection{Módulos Extras}
 
-A continuación se abordará el diseño de los módulos de "clock''
-(utilizado en el procesamiento del echo) y de "LM555 monoestable''
+A continuación se abordará el diseño de los módulos de ''clock''
+(utilizado en el procesamiento del echo) y de ''LM555 monoestable''
 (utilizado en la activación de disparo).
 
 \subsubsection{LM555 Monoestable}
 
 Una vez habilitado el disparo debe activarse el mismo enviando un
-pulso de un ancho mínimo de $10\mu s$ al pin de "trigger'' del
+pulso de un ancho mínimo de $10\mu s$ al pin de ''trigger'' del
 HC SR04. Para esto se decidió usar un multivibrador monoestable, logrado
-mediante el integrado "LM555''. El pin out del circuito integrado
+mediante el integrado ''LM555''. El pin out del circuito integrado
 es el siguiente:
 
 \begin{figure}[H]
@@ -263,7 +263,7 @@ es el siguiente:
 Vale aclarar, que los amplificadores operacionales representados en
 la imagen de la derecha simulan la función de comparación.
 
-Para utilizar el LM555 (el nombre "555'' es debido al divisor resistivo
+Para utilizar el LM555 (el nombre ''555'' es debido al divisor resistivo
 de 3 resistencias de $5K\Omega$ ) en configuración monoestable se
 procederá a realizar el siguiente circuito:
 
@@ -274,9 +274,9 @@ procederá a realizar el siguiente circuito:
 \end{figure}
 
 Como se puede deducir a partir de las imágenes anteriores, al excitar
-el pin de trigger con una tensión mayor a $\frac{1}{3}$ de "Vcc'',
+el pin de trigger con una tensión mayor a $\frac{1}{3}$ de ''Vcc'',
 se activará la salida a la vez que se permitirá la carga del capacitor
-"C1''. Luego, al llegar el capacitor a una tensión mayor a $\frac{2}{3}$
+''C1''. Luego, al llegar el capacitor a una tensión mayor a $\frac{2}{3}$
 de Vcc se reseteará la salida debido a la comparación del pin de threshold,
 y el capacitor se descargará nuevamente mediante la conexión a tierra.
 Esto produce que la salida se encienda tan solo durante el lapso de
@@ -303,7 +303,7 @@ y un capacitor de $10nF$.
 
 Como se ha visto, para el módulo de procesamiento del echo es necesario
 un clock de $10KHz$. La implementación de un clock puede realizarse
-de varias maneras, de las cuales una es hacer uso nuevamente del "LM555''
+de varias maneras, de las cuales una es hacer uso nuevamente del ''LM555''
 en configuración astable como se muestra a continuación:
 
 \begin{figure}[H]
@@ -313,7 +313,7 @@ en configuración astable como se muestra a continuación:
 \caption{Configuración Astable - LM555}
 \end{figure}
 
-En esta configuración el capacitor "C1'' comenzará descargado provocando
+En esta configuración el capacitor ''C1'' comenzará descargado provocando
 que inicialmente la salida sea nula, sin embargo comenzará a cargarse
 de forma que la tensión entre placas puede modelarse mediante la siguiente
 expresión: 
@@ -337,10 +337,10 @@ La descarga se producirá hasta que la tensión vuelva a ser $\frac{1}{3}$
 de $V_{cc}$ y logre activar nuevamente la salida. Este proceso se
 repetirá sucesivamente hasta que se desconecte la alimentación $V_{cc}$,
 por ende, se logra obtener una señal cuadrada periódica que simule
-un clock. Además, esta señal se mantiene representando un "1''
-lógico durante el tiempo para el cual la tensión en el capacitor "C1''
+un clock. Además, esta señal se mantiene representando un ''1''
+lógico durante el tiempo para el cual la tensión en el capacitor ''C1''
 se mantiene cargandosé entre $\frac{1}{3}$ y $\frac{2}{3}$ de $V_{cc}$,
-y representa, en cambio, un "0'' lógico cuando se mantiene descargándose
+y representa, en cambio, un ''0'' lógico cuando se mantiene descargándose
 entre $\frac{2}{3}$ y $\frac{1}{3}$ de $V_{cc}$. A continuación
 se presenta el cálculo del tiempo de encendido de la señal (1
 lógico) y del tiempo de apagado de la misma (0 lógico).\\
@@ -409,7 +409,7 @@ bits que se estan desaprovechando. Para su mejor provecho se podría
 aumentar la frecuencia del clock que ingresa al contador provocando
 así que las unidades de medida del contador sean menores a $100us$,
 lo cual daría mayor precisión a la medición. Si esto se implementa,
-también sería necesario un "shift register'' para luego obtener
+también sería necesario un ''shift register'' para luego obtener
 nuevamente la salida de 8 bits en unidades de $100us$ que se requiere.
 
 \subsection{Conclusión}
@@ -418,9 +418,9 @@ Como conclusión luego de abordar el diseño del proyecto a partir de
 los requerimientos especificados en primera instancia, que luego dió
 lugar a múltiples variables a tener en cuenta, se puede decir fue
 crucial atacar la problemática de cada una de ellas por separado.
-De esta manera, los "requerimientos padres'' (los requerimientos
+De esta manera, los ''requerimientos padres'' (los requerimientos
 principales fueron los pines de entrada y de salida del circuito,
-y lo que cada uno de ellos debía representar) dieron origen a "requerimientos
+y lo que cada uno de ellos debía representar) dieron origen a ''requerimientos
 hijos'' los cuales a su vez también podían desprender otros nuevos
 requerimientos, pero se pudo afrontar cada uno de ellos por separado
 conformando bloques sólidos que tenían como característica su capacidad
