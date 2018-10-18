@@ -51,7 +51,7 @@ vez es habilitado o deshabilitado por un pin de \textit{enable}. Además,
 se debe contar con una salida de 8 bits que represente en binario
 el tiempo calculado por el sensor HC SR04 en unidades de microsegundos.
 Por último, se debe implementar un pin de salida (\textit{meas\_ready})
-que indique si la última medición disparada logró su finalización. 
+que indique si la última medición disparada logró su finalización. \newline
 
 Para el diseño se procuró identificar las distintas etapas necesarias
 para la resolución del problema planteado para luego avocarse a realizar
@@ -143,7 +143,7 @@ de echo descarta la información procesada cada vez que se activa una
 nueva medición. Por ende, con el módulo de almacenamiento 
 se logra obtener información de una medición anterior mientras se
 está realizando una nueva. Luego, la salida de este módulo
-sería la salida de 8 bits indicada en el pinout del proyecto general.
+sería la salida de 8 bits indicada en el pinout del proyecto general.\newline
 
 Sin embargo, para poder implementar esto de manera simple, se requiere
 de un registro de 8 bits que se pueda tanto escribir como leer de
@@ -174,14 +174,14 @@ del mismo) enviar un pulso de duración mayor a $10us$. Por ende el
 módulo de activación de disparo debe imponer un pulso con estas características
 a su salida en caso de que se indique la activación del disparo medición.
 Esta indicación sobre la activación del disparo conformaría la entrada
-del módulo y tan solo basta con que sea un bit que represente un ''1''
-lógico en caso de activar un disparo o un ''0'' en caso de no pretender
+del módulo y tan solo basta con que sea un bit que represente un 1
+lógico en caso de activar un disparo o un 0 en caso de no pretender
 una medición.\newline
 
 Hasta aquí se han indicado la entrada y la salida del módulo, pero
 debe aclararse también que la medición debe activarse (generación
 del pulso mayor a $10us$) una sola vez cuando la entrada este encendida
-(''1'' lógico). Es decir que el módulo debe ser capaz de evitar
+(1 lógico). Es decir que el módulo debe ser capaz de evitar
 el efecto llamado ''retriggering''. Para esto, el módulo solo debe
 activar la medición ante el flanco ascendente de la entrada.
 
@@ -192,8 +192,8 @@ es decir, de $50us$. Esta configuración será abordada en el apartado
 de ''módulos extras'', pero es importante tener en cuenta que para
 lograr que la configuración funcione correctamente es necesario ingresar
 a este con un pulso de menor a $50us$ y además debe ser ''invertido'',
-es decir que el estado que debe ser menor a $50us$ es el ''0''
-lógico.
+es decir que el estado que debe ser menor a $50us$ es el 0
+lógico.\newline
 
 Luego, se decidió implementar un circuito conformado por una resistencia
 y un capacitor que ante la entrada genere una señal análogica la cual
@@ -233,7 +233,7 @@ Dadas estas especificaciones del módulo se planteó el siguiente circuito:
 
 \begin{figure}[H]
 \begin{centering}
-\includegraphics[scale=0.8]{habilitacionDeDisparo.PNG}
+\includegraphics[scale=1]{habilitacionDeDisparo.PNG}
 \caption{Diseño Circuital - Habilitación de Disparo}
 \par\end{centering}
 \end{figure}
@@ -289,11 +289,12 @@ V_{capacitor}=V_{cc}(1-e^{\frac{-t}{R_{1}C_{1}}})
 \end{equation}
 
 Luego, 
+\vspace{5mm}
 \begin{equation}
 V_{capacitor}=\frac{2}{3}V_{cc}\Longleftrightarrow e^{\frac{-t}{R_{1}C_{1}}}=\frac{1}{3}\Longleftrightarrow t=ln(3)R_{1}C_{1}    
 \end{equation}
 
-
+\vspace{5mm}
 Dicho esto, para lograr un pulso de $50\mu s$ (esta duración de pulso
 es adecuada ya que es 5 veces mayor al ancho mínimo del pulso requerido
 por el sensor HC SR04) se puede utilizar una resistencia de $5K\Omega$
@@ -382,8 +383,9 @@ entre los valores de los componentes:
     R_{2}C_{2}\simeq7.2x10^{-5}
 \]
 
+\vspace{5mm}
 Luego, esto se puede lograr con $R_{1}=1K\varOmega$, $R_{2}=72K\varOmega$
-y $C_{1}=1nF$
+y $C_{1}=1nF$.
 
 \subsection{Aspectos a Mejorar}
 
