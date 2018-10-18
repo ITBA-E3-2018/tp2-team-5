@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.13)  17 OCT 2018 22:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.13)  17 OCT 2018 23:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1873,3 +1873,225 @@ LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <12> not available
 Package babel Info: Redefining spanish shorthand <<
 (babel)             in language  on input line 15.
 Package babel Info: Redefining spanish shorthand >>
+(babel)             in language  on input line 15.
+Package babel Info: Redefining spanish shorthand "=
+(babel)             in language  on input line 15.
+Package babel Info: Redefining spanish shorthand "~
+(babel)             in language  on input line 15.
+Package babel Info: Redefining spanish shorthand "!
+(babel)             in language  on input line 15.
+Package babel Info: Redefining spanish shorthand "?
+(babel)             in language  on input line 15.
+Package babel Info: Redefining spanish shorthand <<
+(babel)             in language  on input line 36.
+Package babel Info: Redefining spanish shorthand >>
+(babel)             in language  on input line 36.
+Package babel Info: Redefining spanish shorthand "=
+(babel)             in language  on input line 36.
+Package babel Info: Redefining spanish shorthand "~
+(babel)             in language  on input line 36.
+Package babel Info: Redefining spanish shorthand "!
+(babel)             in language  on input line 36.
+Package babel Info: Redefining spanish shorthand "?
+(babel)             in language  on input line 36.
+<ejercicios/Ej2/LS-CargadoConHC02.png, id=140, 770.88pt x 509.65407pt>
+File: ejercicios/Ej2/LS-CargadoConHC02.png Graphic file (type png)
+<use ejercicios/Ej2/LS-CargadoConHC02.png>
+Package pdftex.def Info: ejercicios/Ej2/LS-CargadoConHC02.png  used on input line 58.
+(pdftex.def)             Requested size: 308.34654pt x 203.858pt.
+) (./ejercicios/Ej3/ej3.tex
+Package babel Info: Redefining spanish shorthand <<
+(babel)             in language  on input line 1.
+Package babel Info: Redefining spanish shorthand >>
+(babel)             in language  on input line 1.
+Package babel Info: Redefining spanish shorthand "=
+(babel)             in language  on input line 1.
+Package babel Info: Redefining spanish shorthand "~
+(babel)             in language  on input line 1.
+Package babel Info: Redefining spanish shorthand "!
+(babel)             in language  on input line 1.
+Package babel Info: Redefining spanish shorthand "?
+(babel)             in language  on input line 1.
+Package babel Info: Redefining spanish shorthand <<
+(babel)             in language  on input line 1.
+Package babel Info: Redefining spanish shorthand >>
+(babel)             in language  on input line 1.
+Package babel Info: Redefining spanish shorthand "=
+(babel)             in language  on input line 1.
+Package babel Info: Redefining spanish shorthand "~
+(babel)             in language  on input line 1.
+Package babel Info: Redefining spanish shorthand "!
+(babel)             in language  on input line 1.
+Package babel Info: Redefining spanish shorthand "?
+(babel)             in language  on input line 1.
+ [2 <./ejercicios/Ej2/LS-CargadoConHC02.png>]
+Package babel Info: Redefining spanish shorthand <<
+(babel)             in language  on input line 1.
+Package babel Info: Redefining spanish shorthand >>
+(babel)             in language  on input line 1.
+Package babel Info: Redefining spanish shorthand "=
+(babel)             in language  on input line 1.
+Package babel Info: Redefining spanish shorthand "~
+(babel)             in language  on input line 1.
+Package babel Info: Redefining spanish shorthand "!
+(babel)             in language  on input line 1.
+Package babel Info: Redefining spanish shorthand "?
+(babel)             in language  on input line 1.
+<ejercicios/Ej3/./circconglitches.jpg, id=150, 437.635pt x 191.71625pt>
+File: ejercicios/Ej3/./circconglitches.jpg Graphic file (type jpg)
+<use ejercicios/Ej3/./circconglitches.jpg>
+Package pdftex.def Info: ejercicios/Ej3/./circconglitches.jpg  used on input line 51.
+(pdftex.def)             Requested size: 191.84274pt x 84.04239pt.
+<ejercicios/Ej3/./glitch.png, id=151, 1027.84pt x 674.52pt>
+File: ejercicios/Ej3/./glitch.png Graphic file (type png)
+<use ejercicios/Ej3/./glitch.png>
+Package pdftex.def Info: ejercicios/Ej3/./glitch.png  used on input line 58.
+(pdftex.def)             Requested size: 244.69371pt x 160.58098pt.
+Missing character: There is no / in font nullfont!
+Missing character: There is no / in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no z in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no s in font nullfont!
+<ejercicios/Ej3/./circsinglitches.jpg, id=154, 448.67625pt x 259.97125pt>
+File: ejercicios/Ej3/./circsinglitches.jpg Graphic file (type jpg)
+<use ejercicios/Ej3/./circsinglitches.jpg>
+Package pdftex.def Info: ejercicios/Ej3/./circsinglitches.jpg  used on input line 94.
+(pdftex.def)             Requested size: 195.7557pt x 113.42375pt.
+Package babel Info: Redefining spanish shorthand <<
+(babel)             in language  on input line 99.
+Package babel Info: Redefining spanish shorthand >>
+(babel)             in language  on input line 99.
+Package babel Info: Redefining spanish shorthand "=
+(babel)             in language  on input line 99.
+Package babel Info: Redefining spanish shorthand "~
+(babel)             in language  on input line 99.
+Package babel Info: Redefining spanish shorthand "!
+(babel)             in language  on input line 99.
+Package babel Info: Redefining spanish shorthand "?
+(babel)             in language  on input line 99.
+Package babel Info: Redefining spanish shorthand <<
+(babel)             in language  on input line 99.
+Package babel Info: Redefining spanish shorthand >>
+(babel)             in language  on input line 99.
+Package babel Info: Redefining spanish shorthand "=
+(babel)             in language  on input line 99.
+Package babel Info: Redefining spanish shorthand "~
+(babel)             in language  on input line 99.
+Package babel Info: Redefining spanish shorthand "!
+(babel)             in language  on input line 99.
+Package babel Info: Redefining spanish shorthand "?
+(babel)             in language  on input line 99.
+ [3 <./ejercicios/Ej3/./circconglitches.jpg> <./ejercicios/Ej3/./glitch.png>]) (./ejercicios/Ej4/ej4.tex
+Package babel Info: Redefining spanish shorthand <<
+(babel)             in language  on input line 1.
+Package babel Info: Redefining spanish shorthand >>
+(babel)             in language  on input line 1.
+Package babel Info: Redefining spanish shorthand "=
+(babel)             in language  on input line 1.
+Package babel Info: Redefining spanish shorthand "~
+(babel)             in language  on input line 1.
+Package babel Info: Redefining spanish shorthand "!
+(babel)             in language  on input line 1.
+Package babel Info: Redefining spanish shorthand "?
+(babel)             in language  on input line 1.
+<ejercicios/Ej4/circuitoAmedir.PNG, id=165, 282.30469pt x 211.54031pt>
+File: ejercicios/Ej4/circuitoAmedir.PNG Graphic file (type png)
+<use ejercicios/Ej4/circuitoAmedir.PNG>
+Package pdftex.def Info: ejercicios/Ej4/circuitoAmedir.PNG  used on input line 9.
+(pdftex.def)             Requested size: 169.38411pt x 126.92516pt.
+Package babel Info: Redefining spanish shorthand <<
+(babel)             in language  on input line 17.
+Package babel Info: Redefining spanish shorthand >>
+(babel)             in language  on input line 17.
+Package babel Info: Redefining spanish shorthand "=
+(babel)             in language  on input line 17.
+Package babel Info: Redefining spanish shorthand "~
+(babel)             in language  on input line 17.
+Package babel Info: Redefining spanish shorthand "!
+(babel)             in language  on input line 17.
+Package babel Info: Redefining spanish shorthand "?
+(babel)             in language  on input line 17.
+<ejercicios/Ej4/AlimentacionConDesacople.png, id=166, 770.88pt x 529.98pt>
+File: ejercicios/Ej4/AlimentacionConDesacople.png Graphic file (type png)
+<use ejercicios/Ej4/AlimentacionConDesacople.png>
+Package pdftex.def Info: ejercicios/Ej4/AlimentacionConDesacople.png  used on input line 69.
+(pdftex.def)             Requested size: 231.26578pt x 158.99521pt.
+<ejercicios/Ej4/AlimentacionSinDesacople.png, id=167, 770.88pt x 531.48563pt>
+File: ejercicios/Ej4/AlimentacionSinDesacople.png Graphic file (type png)
+<use ejercicios/Ej4/AlimentacionSinDesacople.png>
+Package pdftex.def Info: ejercicios/Ej4/AlimentacionSinDesacople.png  used on input line 71.
+(pdftex.def)             Requested size: 231.26578pt x 159.44691pt.
+Package babel Info: Redefining spanish shorthand <<
+(babel)             in language  on input line 74.
+Package babel Info: Redefining spanish shorthand >>
+(babel)             in language  on input line 74.
+Package babel Info: Redefining spanish shorthand "=
+(babel)             in language  on input line 74.
+Package babel Info: Redefining spanish shorthand "~
+(babel)             in language  on input line 74.
+Package babel Info: Redefining spanish shorthand "!
+(babel)             in language  on input line 74.
+Package babel Info: Redefining spanish shorthand "?
+(babel)             in language  on input line 74.
+Package babel Info: Redefining spanish shorthand <<
+(babel)             in language  on input line 74.
+Package babel Info: Redefining spanish shorthand >>
+(babel)             in language  on input line 74.
+Package babel Info: Redefining spanish shorthand "=
+(babel)             in language  on input line 74.
+Package babel Info: Redefining spanish shorthand "~
+(babel)             in language  on input line 74.
+Package babel Info: Redefining spanish shorthand "!
+(babel)             in language  on input line 74.
+Package babel Info: Redefining spanish shorthand "?
+(babel)             in language  on input line 74.
+ [4 <./ejercicios/Ej3/./circsinglitches.jpg> <./ejercicios/Ej4/circuitoAmedir.PNG>]
+<ejercicios/Ej4/SalidaDeHConDesacople.png, id=175, 1027.84pt x 709.65125pt>
+File: ejercicios/Ej4/SalidaDeHConDesacople.png Graphic file (type png)
+<use ejercicios/Ej4/SalidaDeHConDesacople.png>
+Package pdftex.def Info: ejercicios/Ej4/SalidaDeHConDesacople.png  used on input line 92.
+(pdftex.def)             Requested size: 205.56436pt x 141.92773pt.
+<ejercicios/Ej4/SalidaDeHCSinDesacople.png, id=176, 1027.84pt x 707.64375pt>
+File: ejercicios/Ej4/SalidaDeHCSinDesacople.png Graphic file (type png)
+<use ejercicios/Ej4/SalidaDeHCSinDesacople.png>
+Package pdftex.def Info: ejercicios/Ej4/SalidaDeHCSinDesacople.png  used on input line 94.
+(pdftex.def)             Requested size: 205.56436pt x 141.52625pt.
+) (./ejercicios/Ej5/ej5.tex
+Package babel Info: Redefining spanish shorthand <<
+(babel)             in language  on input line 1.
+Package babel Info: Redefining spanish shorthand >>
+(babel)             in language  on input line 1.
+Package babel Info: Redefining spanish shorthand "=
+(babel)             in language  on input line 1.
+Package babel Info: Redefining spanish shorthand "~
+(babel)             in language  on input line 1.
+Package babel Info: Redefining spanish shorthand "!
+(babel)             in language  on input line 1.
+Package babel Info: Redefining spanish shorthand "?
+(babel)             in language  on input line 1.
+<ejercicios/Ej5/./TTLFlotante.jpg, id=177, 235.88126pt x 108.405pt>
+File: ejercicios/Ej5/./TTLFlotante.jpg Graphic file (type jpg)
+<use ejercicios/Ej5/./TTLFlotante.jpg>
+Package pdftex.def Info: ejercicios/Ej5/./TTLFlotante.jpg  used on input line 8.
+(pdftex.def)             Requested size: 143.88297pt x 66.12529pt.
+<ejercicios/Ej5/./CMOSFlotante.jpg, id=178, 213.79875pt x 116.435pt>
+File: ejercicios/Ej5/./CMOSFlotante.jpg Graphic file (type jpg)
+<use ejercicios/Ej5/./CMOSFlotante.jpg>
+Package pdftex.def Info: ejercicios/Ej5/./CMOSFlotante.jpg  used on input line 14.
+(pdftex.def)             Requested size: 122.34685pt x 66.62979
